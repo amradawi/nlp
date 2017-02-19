@@ -1,0 +1,4 @@
+[LOGGING]
+logLevel:DEBUG
+logFile:/tmp/preprocessor.log
+format:base
