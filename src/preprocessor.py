@@ -72,11 +72,11 @@ class PreProcessor:
             return sent_tokenize(text.decode("utf-8"))
 
     @staticmethod
-    def remove_hashtag_user_symbols(text):
-        text = text.strip()
-        if len(text) > 0 and text[0] in ["@", "#"]:
-            return text[1:]
-        return text
+    def remove_hashtag_user_symbols(word):
+        word = word.strip()
+        if len(word) > 0 and word[0] in ["@", "#"]:
+            return word[1:]
+        return word
 
     @staticmethod
     def reconstruct_ellipsis(sent_list):
@@ -136,10 +136,11 @@ class PreProcessor:
 
 
     def output_file_(self, line_lists):
-        with open(self.output_filename, 'wb+') as f:
+        with open(self.output_filename, 'a+') as f:
             for line in line_lists:
                 if type(line) == list:
                     line = self.reconstruct_line(line)
+                    print line
                 else:
                     line = line[0]
                 try:
